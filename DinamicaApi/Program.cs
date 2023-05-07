@@ -4,7 +4,17 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyHeader();
+        policy.WithOrigins("https://localhost:3000", "https://<domainname>",
+            $"https://{builder.Configuration["Auth0:Domain"]}");
+        policy.AllowAnyMethod();
+        policy.AllowCredentials();
+    });
+});
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DinamicaContext>(opt =>
     opt.UseInMemoryDatabase("DinamicaDB"));
