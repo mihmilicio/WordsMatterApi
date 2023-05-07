@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mimil\\Documents\\git\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj": {}
+    "C:\\Users\\lucas\\OneDrive\\Documentos\\GitHub\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mimil\\Documents\\git\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj": {
+    "C:\\Users\\lucas\\OneDrive\\Documentos\\GitHub\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mimil\\Documents\\git\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj",
+        "projectUniqueName": "C:\\Users\\lucas\\OneDrive\\Documentos\\GitHub\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj",
         "projectName": "DinamicaApi",
-        "projectPath": "C:\\Users\\mimil\\Documents\\git\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj",
-        "packagesPath": "C:\\Users\\mimil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mimil\\Documents\\git\\WordsMatterApi\\DinamicaApi\\obj\\",
+        "projectPath": "C:\\Users\\lucas\\OneDrive\\Documentos\\GitHub\\WordsMatterApi\\DinamicaApi\\DinamicaApi.csproj",
+        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lucas\\OneDrive\\Documentos\\GitHub\\WordsMatterApi\\DinamicaApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mimil\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,6 +43,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[7.0.5, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -66,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
