@@ -9,5 +9,11 @@ public class DinamicaContext : DbContext
     {
     }
 
-    public DbSet<TextoEnviado> TextosEnviados { get; set; } = null!;
+    public DbSet<TextoEnviado> TextosEnviados { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<TextoEnviado>().HasKey(m => m.Id);
+        base.OnModelCreating(builder);
+    }
 }

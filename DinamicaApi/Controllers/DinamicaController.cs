@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using DinamicaApi.Models;
 using System.Net;
 using System.Text.Json;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace LojaApi.Controllers;
 
@@ -13,16 +12,19 @@ public class DinamicaController : ControllerBase
     private readonly ILogger<DinamicaController> _logger;
     private readonly DinamicaContext _context;
     private readonly INuvemService _nuvemSvc;
+    private readonly RabbitMQProducer _producer;
 
     public DinamicaController(
         ILogger<DinamicaController> logger, 
         DinamicaContext context,
-        INuvemService nuvemSvc
+        INuvemService nuvemSvc,
+        RabbitMQProducer producer
     )
     {
         _logger = logger;
         _context = context;
         _nuvemSvc = nuvemSvc;
+        _producer = producer;
     }
 
     [HttpPost("salas/{idSala}")]
@@ -30,7 +32,6 @@ public class DinamicaController : ControllerBase
     {
       
       var sala = await GetSalaAsync(idSala);
-      // TODO verificar que sala existe, retornar erro caso não
       if (sala == null)
       {
         return NotFound(new Erro("É necessário inserir uma sala valida para enviar"));
@@ -56,8 +57,12 @@ public class DinamicaController : ControllerBase
       try {
         _context.TextosEnviados.Add(textoEnviado);
         await _context.SaveChangesAsync();
+
         HttpClient req = new HttpClient();
         HttpResponseMessage response = req.PutAsJsonAsync("http://localhost:3000/sala/" + idSala, salaAux).Result;
+        
+        _producer.SendEnvioMessage<EnvioParticipante>(new EnvioParticipante(textoEnviado.NomeParticipante, textoEnviado.IdSala));
+
         return Created("", textoEnviado);
       }
       catch (Exception)
@@ -79,7 +84,6 @@ public class DinamicaController : ControllerBase
     public async Task<ActionResult<ImagemNuvem>> GetNuvemDePalavras(string idSala)
     {
       var sala = await GetSalaAsync(idSala);
-      // verificar que sala existe, retornar erro caso não
       if (sala == null)
       {
          return NotFound(new Erro("É necessário inserir uma sala valida para enviar"));
