@@ -6,9 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 builder.Services.AddDbContext<DinamicaContext>(opt =>
-    opt.UseInMemoryDatabase("DinamicaDB"));
+    opt.UseSqlite("Data Source=Dinamica.db"));
+
 builder.Services.AddHttpClient<INuvemService, NuvemService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
