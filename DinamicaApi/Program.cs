@@ -15,12 +15,14 @@ builder.Services.AddCors(options =>
         policy.AllowCredentials();
     });
 });
+
 builder.Services.AddControllers();
 
 builder.Services.AddDbContext<DinamicaContext>(opt =>
     opt.UseSqlite("Data Source=Dinamica.db"));
 
 builder.Services.AddHttpClient<INuvemService, NuvemService>();
+builder.Services.AddSingleton<RabbitMQProducer>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
