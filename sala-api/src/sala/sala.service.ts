@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Sala } from './entitites/sala.entity';
 import { SalaDto } from './dto/sala.dto';
+import { VencedorDto } from './dto/vencedor.dto';
 
 @Injectable()
 export class SalaService {
@@ -39,6 +40,12 @@ export class SalaService {
     const sala = await this.findOne(id);
     await this.repository.delete(sala);
     return;
+  }
+
+  public async setVencedor(dto: VencedorDto): Promise<Sala> {
+    let sala = await this.findOne(dto.id);
+    sala = { ...sala, vencedor: dto.nome };
+    return await this.repository.save(sala);
   }
 
   private getId(): string {
