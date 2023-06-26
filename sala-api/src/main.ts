@@ -8,8 +8,8 @@ async function bootstrap() {
   const microservice = app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.NATS,
     options: {
-      servers: [], // TODO
-      queue: 'vencedor',
+      servers: ['nats://localhost:4222'],
+      queue: 'FILA_VENCEDOR',
     },
   });
 
