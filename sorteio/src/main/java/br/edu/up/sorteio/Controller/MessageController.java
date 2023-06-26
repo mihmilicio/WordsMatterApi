@@ -45,13 +45,13 @@ public class MessageController {
     public void consumeMessages() {
         List<TextoEnviado> mensagens = new ArrayList<TextoEnviado>();
         try {
-        Message message = rabbitTemplate.receive("FILA_PAO");
+        Message message = rabbitTemplate.receive("EnvioParticipante");
         String mensagemAux = new String(message.getBody());
         while (mensagemAux != null) {
             TextoEnviado texto = objectMapper.readValue(mensagemAux,TextoEnviado.class);
             mensagens.add(texto);
             // Lógica para processar a mensagem recebida
-            message = rabbitTemplate.receive("FILA_PAO");
+            message = rabbitTemplate.receive("EnvioParticipante");
             if (message != null)
             {
                 mensagemAux = new String(message.getBody());
