@@ -9,6 +9,8 @@ import {
 } from '@nestjs/common';
 import { SalaService } from './sala.service';
 import { SalaDto } from './dto/sala.dto';
+import { EventPattern } from '@nestjs/microservices';
+import { VencedorDto } from './dto/vencedor.dto';
 
 @Controller('sala')
 export class SalaController {
@@ -37,5 +39,10 @@ export class SalaController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.service.remove(id);
+  }
+
+  @EventPattern('vencedor_sala')
+  async setVencedor(data: VencedorDto) {
+    return this.service.setVencedor(data);
   }
 }

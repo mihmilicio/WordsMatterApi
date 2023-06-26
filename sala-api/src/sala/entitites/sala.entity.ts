@@ -13,4 +13,7 @@ export class Sala {
 
   @Column()
   maxEnvios?: number;
+
+  @Column({ nullable: true })
+  vencedor?: string;
 }
