@@ -30,7 +30,7 @@ public class MessageController {
     private final JmsTemplate jmsTemplate;
 
     private final String natsUrl = "nats://localhost:4222"; // Substitua pelo URL do servidor NATS
-    private final String natsSubject = "vencedor"; // Substitua pelo nome do tópico
+    private final String natsSubject = "FILA_VENCEDOR"; // Substitua pelo nome do tópico
 
 
     @Autowired
