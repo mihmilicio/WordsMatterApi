@@ -43,8 +43,8 @@ export class SalaService {
   }
 
   public async setVencedor(dto: VencedorDto): Promise<Sala> {
-    let sala = await this.findOne(dto.id);
-    sala = { ...sala, vencedor: dto.nome };
+    let sala = await this.findOne(dto.idSala);
+    sala = { ...sala, vencedor: dto.nomeParticipante };
     return await this.repository.save(sala);
   }
 

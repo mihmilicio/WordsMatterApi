@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class VencedorDto {
   @ApiProperty()
-  id: string;
+  idSala: string;
   @ApiProperty()
-  nome: string;
+  nomeParticipante: string;
 }
