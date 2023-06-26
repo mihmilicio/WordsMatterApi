@@ -9,7 +9,6 @@ async function bootstrap() {
     transport: Transport.NATS,
     options: {
       servers: ['nats://localhost:4222'],
-      queue: 'FILA_VENCEDOR',
     },
   });
 

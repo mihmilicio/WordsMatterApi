@@ -41,7 +41,7 @@ export class SalaController {
     return this.service.remove(id);
   }
 
-  @MessagePattern()
+  @MessagePattern('FILA_VENCEDOR')
   async setVencedor(data: VencedorDto) {
     return this.service.setVencedor(data);
   }
