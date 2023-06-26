@@ -2,7 +2,7 @@ package br.edu.up.sorteio.Model;
 
 public class TextoEnviado {
     private String nomeParticipante;
-    private int idSala;
+    private String idSala;
     // getters e setters
 
     public String getnomeParticipante() {
@@ -13,11 +13,11 @@ public class TextoEnviado {
         this.nomeParticipante = nomeParticipante;
     }
 
-    public int getidSala() {
+    public String getidSala() {
         return idSala;
     }
 
-    public void setIdSala(int idSala) {
+    public void setIdSala(String idSala) {
         this.idSala = idSala;
     }
 }
