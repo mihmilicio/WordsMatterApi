@@ -8,8 +8,8 @@ import { RabbitMQService } from './rmq.service';
         name: 'rabbit-mq-module',
         transport: Transport.RMQ,
         options: {
-          urls: ['url_here'],
-          queue: 'rabbit-mq-nest-js',
+          urls: ['amqp://localhost:5672'],
+          queue: 'teste_consumo_net',
         },
       },
     ]),
